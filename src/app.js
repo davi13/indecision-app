@@ -1,14 +1,32 @@
 class Indecision extends React.Component {
+    constructor(props) {
+        super(props)
+        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+        this.state = {
+            options: ['One', 'Two', 'Three', 'lol']
+        }
+    }
+    handleDeleteOptions() {
+        this.setState(() => {
+            return {
+                options: []
+            }
+        })
+    }
+    //handleDeleteOptions
     render() {
         const title = 'Indecision'
         const subtitle = 'Put your live in the hands of a computer.';
-        const options = ['One', 'Two', 'Three', 'Four'];
+
 
         return (
             <div>
                 <Header title={title} subtitle={subtitle} />
-                <Action />
-                <Options options={options} />
+                <Action hasOptions={this.state.options.length > 0} />
+                <Options
+                    options={this.state.options}
+                    handleDeleteOptions={this.handleDeleteOptions}
+                />
                 <AddOption />
             </div>
         );
@@ -31,25 +49,22 @@ class Action extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.handlePick}>What Should I do ?</button>
+                <button
+                    onClick={this.handlePick}
+                    disabled={!this.props.hasOptions}
+                >
+                    What Should I do ?
+                </button>
             </div>
         )
     }
 }
 
 class Options extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleRemoveAll = this.handleRemoveAll.bind(this);
-    }
-    handleRemoveAll() {
-        //alert('some message');
-        console.log(this.props.options);
-    }
     render() {
         return (
             <div>
-                <button onClick={this.handleRemoveAll}>Remove All</button>
+                <button onClick={this.props.handleDeleteOptions}>Remove All</button>
                 {this.props.options.map((e, i) => <Option key={i} OptionText={e} />)}
 
             </div>
@@ -61,7 +76,7 @@ class Option extends React.Component {
     render() {
         return (
             <div>
-                <p>Options: {this.props.OptionText}</p>
+                <li>Options: {this.props.OptionText}</li>
             </div>
         );
     }
