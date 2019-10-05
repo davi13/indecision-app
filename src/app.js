@@ -3,6 +3,7 @@ class Indecision extends React.Component {
         super(props)
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
         this.handlePick = this.handlePick.bind(this);
+        this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
             options: ['thing One', 'thing Two', 'thing Three', 'thing lol']
         }
@@ -20,7 +21,13 @@ class Indecision extends React.Component {
         alert(option);
     }
 
-    //handleDeleteOptions
+    handleAddOption(option) {
+        this.setState((prevState) => {
+            return {
+                options: prevState.options.concat([option])
+            };
+        });
+    }
     render() {
         const title = 'Indecision'
         const subtitle = 'Put your live in the hands of a computer.';
@@ -35,7 +42,9 @@ class Indecision extends React.Component {
                     options={this.state.options}
                     handleDeleteOptions={this.handleDeleteOptions}
                 />
-                <AddOption />
+                <AddOption
+                    handleAddOption={this.handleAddOption}
+                />
             </div>
         );
     }
@@ -89,23 +98,27 @@ class Option extends React.Component {
 }
 
 class AddOption extends React.Component {
-    handleSubmit(e) {
-
+    constructor(props) {
+        super(props);
+        this.handleAddOption = this.handleAddOption.bind(this);
+    }
+    handleAddOption(e) {
         e.preventDefault();
+
         const option = e.target.elements.options.value.trim()
 
         if (option) {
-            console.log(e.target.elements.options.value);
-            alert(option);
-
+            this.props.handleAddOption(option);
         }
     }
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form
+                    onSubmit={this.handleAddOption}
+                >
                     <input type="text" placeholder="in here put your text" name="options" />
-                    <button >Add</button>
+                    <button>Add</button>
                 </form>
             </div>
         );
