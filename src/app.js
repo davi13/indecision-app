@@ -38,8 +38,13 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
     handleRemoveAll() {
-        alert('some message');
+        //alert('some message');
+        console.log(this.props.options);
     }
     render() {
         return (
@@ -66,11 +71,11 @@ class AddOption extends React.Component {
     handleSubmit(e) {
 
         e.preventDefault();
+        const option = e.target.elements.options.value.trim()
 
-
-        if (e) {
+        if (option) {
             console.log(e.target.elements.options.value);
-            alert(e.target.elements.options.value);
+            alert(option);
 
         }
     }
