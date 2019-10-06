@@ -10,14 +10,35 @@ class Indecision extends React.Component {
             options: props.options
         }
     }
+    componentDidMount() {
+        try {
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json);
+            if (options) {
+                this.setState(() => ({ options }))
+            }
+        } catch (e) {
+
+        }
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.options.length !== this.state.options.length) {
+            const json = JSON.stringify(this.state.options);
+            console.log('saving data');
+            localStorage.setItem('options', json);
+        }
+
+    }
+    componentWillUnMount() {
+        console.log('componentWillMount');
+    }
+
     handleDeleteOptions() {
         this.setState(() => ({ options: [] }));
     }
     handleDeleteOption(optionToRemove) {
         this.setState((prevState) => ({
-            options: prevState.options.filter((option) => {
-                return optionToRemove !== option;
-            })
+            options: prevState.options.filter((option) => optionToRemove !== option)
         }))
     }
     handlePick() {
