@@ -29,9 +29,7 @@ var Indecision = function (_React$Component) {
         key: 'handleDeleteOptions',
         value: function handleDeleteOptions() {
             this.setState(function () {
-                return {
-                    options: []
-                };
+                return { options: [] };
             });
         }
     }, {
@@ -49,10 +47,14 @@ var Indecision = function (_React$Component) {
             } else if (this.state.options.indexOf(option) > -1) {
                 return 'This options Already exists';
             }
+            // this.setState((prevState) => {
+            //     return {
+            //         options: prevState.options.concat([option])
+            //     };
+            // });
+
             this.setState(function (prevState) {
-                return {
-                    options: prevState.options.concat([option])
-                };
+                return { options: prevState.options.concat([option]) };
             });
         }
     }, {
@@ -172,6 +174,10 @@ var AddOption = function (_React$Component2) {
 
             var option = e.target.elements.options.value.trim();
             var error = this.props.handleAddOption(option);
+            // this.setState(() => {
+            //     return { error };
+            // })
+
             this.setState(function () {
                 return { error: error };
             });
