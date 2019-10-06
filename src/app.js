@@ -117,6 +117,7 @@ const Options = (props) => {
     return (
         <div>
             <button onClick={props.handleDeleteOptions}>Remove All</button>
+            {props.options.length === 0 && <p>Please add an options to get started!</p>}
             {props.options.map((option) => (
                 <Option
                     key={option}
@@ -160,6 +161,10 @@ class AddOption extends React.Component {
         //     return { error };
         // })
         this.setState(() => ({ error }));
+        if (!error) {
+            e.target.elements.options.value = ''
+
+        }
     }
     render() {
         return (
