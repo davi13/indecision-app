@@ -22,7 +22,7 @@ var Indecision = function (_React$Component) {
         _this.handleDeleteOption = _this.handleDeleteOption.bind(_this);
 
         _this.state = {
-            options: props.options
+            options: []
         };
         return _this;
     }
@@ -124,10 +124,6 @@ var Indecision = function (_React$Component) {
 
     return Indecision;
 }(React.Component);
-
-Indecision.defaultProps = {
-    options: []
-};
 
 var Header = function Header(props) {
     return React.createElement(
