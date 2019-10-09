@@ -1,14 +1,18 @@
-// import square from './utils.js';
+// import validator from 'validator';
 
-//import subtract, { /*square, add*/ } from './utils';
+// console.log(validator.isEmail('test@mail.com'));
 
-// console.log('app.js running ' + square(4));
-// console.log('app.js running ' + add(15, 5));
-// console.log('app.js running ' + subtract(150, 50));
+// // import square from './utils.js';
 
-import isSenior, { /*isAdult, canDrink*/ } from './person';
+// //import subtract, { /*square, add*/ } from './utils';
 
-// console.log(isAdult(18));
-// console.log(canDrink(20));
+// // console.log('app.js running ' + square(4));
+// // console.log('app.js running ' + add(15, 5));
+// // console.log('app.js running ' + subtract(150, 50));
 
-console.log(isSenior(66))
+// //import isSenior, { /*isAdult, canDrink*/ } from './person';
+
+// // console.log(isAdult(18));
+// // console.log(canDrink(20));
+
+// // console.log(isSenior(66))
