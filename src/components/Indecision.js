@@ -10,6 +10,10 @@ class Indecision extends React.Component {
         options: [],
         selectedOption: undefined
     }
+    handleSelectedOption = () => {
+        //console.log('clicked');
+        this.setState(() => ({ selectedOption: undefined }))
+    }
 
     handleDeleteOptions = () => {
         this.setState(() => ({ options: [] }));
@@ -35,10 +39,7 @@ class Indecision extends React.Component {
         this.setState((prevState) => ({ options: prevState.options.concat([option]) }));
     };
 
-    handleSelectedOption = () => {
-        //console.log('clicked');
-        this.setState(() => ({ selectedOption: undefined }))
-    }
+
 
     componentDidMount() {
         try {
