@@ -58,13 +58,10 @@ class Indecision extends React.Component {
             console.log('saving data');
             localStorage.setItem('options', json);
         }
-
     }
     componentWillUnMount() {
         console.log('componentWillMount');
     }
-
-
     render() {
         const title = 'Indecision'
         const subtitle = 'Put your live in the hands of a computer.';

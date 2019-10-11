@@ -24,7 +24,7 @@ export default class AddOption extends React.Component {
                     onSubmit={this.handleAddOption}
                 >
                     <input type="text" placeholder="in here put your text" name="options" />
-                    <button>Add</button>
+                    <button className="button">Add Option</button>
                 </form>
             </div>
         );
