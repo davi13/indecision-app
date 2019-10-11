@@ -12,7 +12,7 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/
         }, {// IMPORTANT TO USE yarn add sass-loader@6.0.6 node-ss@4.5.3  cause node-sass@4.5.3 dosen't work on mac
-            test: /\.scss$/,
+            test: /\.s?css$/,
             use: [
                 'style-loader',
                 'css-loader',
