@@ -19,7 +19,7 @@ class Indecision extends React.Component {
     }
     handleDeleteOption = (optionToRemove) => {
         this.setState((prevState) => ({
-            selectedOption: prevState.options.filter((option) => optionToRemove !== option)
+            options: prevState.options.filter((option) => optionToRemove !== option)
         }))
     }
     handlePick = () => {
